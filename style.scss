@@ -68,20 +68,30 @@ textarea {
     align-items: center;
     align-self: center;
     box-sizing: border-box;
-    
-   
 }
 sup {
     position: absolute;
     margin: -14px 0 0 -20px;
-    font-size: 10px;
-    // display: none;
+    font-size: 14px;
+    font-weight: 900;    
 }
 span {
-    font-weight: bold;
+    font-weight: 900;
     font-size: 14px;
 }
-
-.rus {
-    font-weight: bold;
+.lang_reset {
+    font-size: 10px;
+    font-weight: 400;
+}
+.lowercase {
+    text-transform: lowercase;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.keydown {
+    background: #f9de53;
+}
+.keyup {
+    background: none;
 }
