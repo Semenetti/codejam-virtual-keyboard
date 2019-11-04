@@ -1,0 +1,28 @@
+{
+  "name": "codejam-virtual-keyboard",
+  "version": "1.0.0",
+  "description": "virtual-keybord task",
+  "main": "main.js",
+  "dependencies": {
+    "eslint": "^6.6.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semenetti/codejam-virtual-keyboard.git"
+  },
+  "author": "Adriano Semenetti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Semenetti/codejam-virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/Semenetti/codejam-virtual-keyboard#readme"
+}
