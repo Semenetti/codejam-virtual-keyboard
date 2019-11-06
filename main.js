@@ -252,3 +252,9 @@ runOnKeys(
   'AltLeft',
   'ShiftLeft',
 );
+
+
+result.value = localStorage.getItem('result');
+    result.oninput = () => {
+      localStorage.setItem('result', result.value)
+    };
