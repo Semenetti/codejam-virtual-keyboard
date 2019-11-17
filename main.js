@@ -1,3 +1,4 @@
+
 const row1Keys = [{
   value: '1',
   valueRus: '1',
@@ -358,8 +359,11 @@ function runOnKeys(func, ...codes) {
     if (event.code === 'CapsLock') {
       upperLower();
     }
-    document.getElementById(event.code).classList.remove('keyup');
-    document.getElementById(event.code).classList.add('keydown');
+    if (document.getElementById(event.code) != null) {
+      document.getElementById(event.code).classList.remove('keyup');
+      document.getElementById(event.code).classList.add('keydown');
+    }
+
 
     if (codes.some((code) => !pressed.has(code))) {
       return;
