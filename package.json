@@ -13,7 +13,7 @@
     "eslint-plugin-react": "^7.16.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint main.js --fix"
   },
   "repository": {
     "type": "git",
