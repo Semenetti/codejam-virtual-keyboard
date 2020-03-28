@@ -403,33 +403,40 @@ document.querySelectorAll('.key').forEach((element) => {
         document.getElementById('result').value = document
           .getElementById('result')
           .value.substr(0, document.getElementById('result').value.length - 1);
+          localStorage.setItem('result', result.value);
         break;
       case 'Enter':
         document.getElementById('result').value += '\n';
+        localStorage.setItem('result', result.value);
         break;
       case 'Tab':
         e.preventDefault();
         document.getElementById('result').value += '   ';
         document.getElementById('result').focus();
+        localStorage.setItem('result', result.value);
         break;
       case 'CapsLock':
         upperLower();
+        localStorage.setItem('result', result.value);
         break;
       default:
         if (lang) {
           document.getElementById('result').value += capsLock
             ? element.getAttribute('value').toUpperCase()
             : element.getAttribute('value').toLowerCase();
+            localStorage.setItem('result', result.value);
         } else if (capsLock) {
           if (element.getAttribute('valueRus') == null) {
             document.getElementById('result').value += element.getAttribute(
               'value',
             );
+            localStorage.setItem('result', result.value);
           } else {
             document.getElementById('result').value += element
               .getAttribute('valueRus')
               .toUpperCase();
           }
+          localStorage.setItem('result', result.value);
         } else if (element.getAttribute('valueRus') == null) {
           document.getElementById('result').value += element.getAttribute(
             'value',
@@ -438,6 +445,7 @@ document.querySelectorAll('.key').forEach((element) => {
           document.getElementById('result').value += element
             .getAttribute('valueRus')
             .toLowerCase();
+            localStorage.setItem('result', result.value);
         }
         break;
     }
@@ -514,7 +522,11 @@ runOnKeys(
 );
 
 const result = document.getElementById('result');
+result.setAttribute('type', 'text')
 result.value = localStorage.getItem('result');
 result.oninput = () => {
+  localStorage.setItem('result', result.value);
+};
+result.onchange = () => {
   localStorage.setItem('result', result.value);
 };
