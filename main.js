@@ -3,7 +3,13 @@ import arrayWithKeys from './components/data.js';
 import fragment from './components/Markdown.js';
 
 let capsLock = true;
-let lang = true;
+let lang;
+
+if (localStorage.lang === undefined) {
+  lang = 'en';
+} else {
+  lang = localStorage.lang;
+}
 
 document.body.append(fragment);
 
@@ -38,9 +44,15 @@ const renderKeysToDom = () => {
 };
 
 const setDefaultLanguage = () => {
-  document.querySelectorAll('sup').forEach((element) => {
-    element.classList.add('lang_reset');
-  });
+  if (lang === 'en') {
+    document.querySelectorAll('sup').forEach((element) => {
+      element.classList.add('lang_reset');
+    });
+  } else {
+    document.querySelectorAll('span').forEach((element) => {
+      element.classList.add('lang_reset');
+    });
+  }
 };
 
 function upperLower() {
@@ -116,7 +128,7 @@ const addKeysClickHandler = () => {
           localStorage.setItem('result', result.value);
           break;
         default:
-          if (lang) {
+          if (lang === 'en') {
             document.getElementById('result').value += capsLock
               ? element.getAttribute('value').toUpperCase()
               : element.getAttribute('value').toLowerCase();
@@ -196,8 +208,13 @@ function runOnKeys(func, ...codes) {
 
 runOnKeys(
   () => {
-    lang = !lang;
-    if (lang) {
+    if (lang === 'en') {
+      lang = 'ru';
+    } else {
+      lang = 'en';
+    }
+    localStorage.lang = lang;
+    if (lang === 'en') {
       document.querySelectorAll('span').forEach((element) => {
         element.classList.remove('lang_reset');
       });
