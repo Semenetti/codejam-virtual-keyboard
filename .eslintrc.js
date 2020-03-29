@@ -12,6 +12,7 @@ module.exports = {
     ecmaVersion: 2018
   },
   rules: {
+    "import/extensions": ["error", { js: "always" }],
     "linebreak-style": ["error", "windows"],
     "no-console": "off",
     "no-restricted-syntax": [

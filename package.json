@@ -13,7 +13,7 @@
     "eslint-plugin-react": "^7.16.0"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint main.js --fix"
+    "lint": "npx eslint ./ --fix"
   },
   "repository": {
     "type": "git",

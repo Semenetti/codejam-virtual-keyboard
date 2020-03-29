@@ -79,11 +79,7 @@ textarea:focus {
   color: #444;
 }
 
-#row1,
-#row2,
-#row3,
-#row4,
-#row5 {
+.row {
   /* background: yellow; */
   margin: 5px;
   padding: 1px;
