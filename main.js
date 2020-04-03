@@ -19,11 +19,11 @@ result.setAttribute('type', 'text');
 const keyboard = document.getElementById('keyboard');
 
 const getWrapper = () => {
-  const keyboardConstainer = document.createElement('div');
-  keyboardConstainer.className = 'row';
-  keyboardConstainer.innerHTML = '';
-  keyboard.append(keyboardConstainer);
-  return keyboardConstainer;
+  const keyboardContainer = document.createElement('div');
+  keyboardContainer.className = 'row';
+  keyboardContainer.innerHTML = '';
+  keyboard.append(keyboardContainer);
+  return keyboardContainer;
 };
 
 const generateKeys = (data) => {
@@ -78,6 +78,52 @@ function upperLower() {
   }
 }
 
+function addTextAtCaret(text) {
+  const textArea = document.getElementById('result');
+  let cursorPosition = textArea.selectionStart;
+  let front;
+  let back;
+  const inputText = '';
+
+  switch (text) {
+    case 'Backspace':
+      front = textArea.value.substring(0, cursorPosition - 1);
+      back = textArea.value.substring(cursorPosition, textArea.value.length);
+      textArea.value = front + back;
+
+      // updateCursorPosition
+      cursorPosition += inputText.length;
+      textArea.selectionStart = cursorPosition - 1;
+      textArea.selectionEnd = cursorPosition - 1;
+      break;
+    case 'Del':
+      front = textArea.value.substring(0, cursorPosition);
+      back = textArea.value.substring(
+        cursorPosition + 1,
+        textArea.value.length,
+      );
+      textArea.value = front + back;
+
+      // updateCursorPosition
+      cursorPosition += inputText.length;
+      textArea.selectionStart = cursorPosition;
+      textArea.selectionEnd = cursorPosition;
+      break;
+
+    default:
+      front = textArea.value.substring(0, cursorPosition);
+      back = textArea.value.substring(cursorPosition, textArea.value.length);
+      textArea.value = front + text + back;
+
+      // updateCursorPosition
+      cursorPosition += text.length;
+      textArea.selectionStart = cursorPosition;
+      textArea.selectionEnd = cursorPosition;
+      break;
+  }
+  textArea.focus();
+}
+
 const cancelCommandKeysDefaultActions = (e) => {
   switch (e.key) {
     case 'Tab':
@@ -105,58 +151,44 @@ const addKeysClickHandler = () => {
     element.addEventListener('click', (e) => {
       switch (element.id) {
         case 'Backspace':
-          document.getElementById('result').value = document
-            .getElementById('result')
-            .value.substr(
-              0,
-              document.getElementById('result').value.length - 1,
-            );
-          localStorage.setItem('result', result.value);
+          addTextAtCaret('Backspace');
           break;
         case 'Enter':
-          document.getElementById('result').value += '\n';
-          localStorage.setItem('result', result.value);
+          addTextAtCaret('\n');
           break;
         case 'Tab':
           e.preventDefault();
-          document.getElementById('result').value += '   ';
-          document.getElementById('result').focus();
-          localStorage.setItem('result', result.value);
+          addTextAtCaret('   ');
           break;
         case 'CapsLock':
           upperLower();
-          localStorage.setItem('result', result.value);
+          break;
+        case 'Del':
+          addTextAtCaret('Del');
           break;
         default:
           if (lang === 'en') {
-            document.getElementById('result').value += capsLock
-              ? element.getAttribute('value').toUpperCase()
-              : element.getAttribute('value').toLowerCase();
-            localStorage.setItem('result', result.value);
+            if (capsLock) {
+              addTextAtCaret(element.getAttribute('value').toUpperCase());
+            } else {
+              addTextAtCaret(element.getAttribute('value').toLowerCase());
+            }
           } else if (capsLock) {
             if (element.getAttribute('valueRus') == null) {
-              document.getElementById('result').value += element.getAttribute(
-                'value',
-              );
+              addTextAtCaret(element.getAttribute('value'));
               localStorage.setItem('result', result.value);
             } else {
-              document.getElementById('result').value += element
-                .getAttribute('valueRus')
-                .toUpperCase();
+              addTextAtCaret(element.getAttribute('valueRus').toUpperCase());
             }
             localStorage.setItem('result', result.value);
           } else if (element.getAttribute('valueRus') == null) {
-            document.getElementById('result').value += element.getAttribute(
-              'value',
-            );
+            addTextAtCaret(element.getAttribute('value'));
           } else {
-            document.getElementById('result').value += element
-              .getAttribute('valueRus')
-              .toLowerCase();
-            localStorage.setItem('result', result.value);
+            addTextAtCaret(element.getAttribute('valueRus').toLowerCase());
           }
           break;
       }
+      localStorage.setItem('result', result.value);
     });
   });
 };
