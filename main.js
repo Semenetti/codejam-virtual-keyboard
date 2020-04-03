@@ -55,6 +55,7 @@ const setDefaultLanguage = () => {
   }
 };
 
+// feat: CapsLock
 function upperLower() {
   capsLock = !capsLock;
   if (capsLock) {
@@ -127,8 +128,8 @@ function addTextAtCaret(text) {
 const cancelCommandKeysDefaultActions = (e) => {
   switch (e.key) {
     case 'Tab':
-      e.preventDefault();
-      document.getElementById('result').value += '   ';
+      e.preventDefault();     
+      addTextAtCaret('   ');
       break;
     case 'Alt':
       e.preventDefault();
@@ -153,19 +154,40 @@ const addKeysClickHandler = () => {
         case 'Backspace':
           addTextAtCaret('Backspace');
           break;
+
         case 'Enter':
           addTextAtCaret('\n');
           break;
+
         case 'Tab':
           e.preventDefault();
           addTextAtCaret('   ');
           break;
+
         case 'CapsLock':
           upperLower();
           break;
-        case 'Del':
+
+        case 'ArrowUp':
+          addTextAtCaret('ArrowUp');
+          break;
+
+        case 'ArrowDown':
+          addTextAtCaret('ArrowDown');
+          break;
+
+        case 'ArrowLeft':
+          addTextAtCaret('ArrowLeft');
+          break;
+
+        case 'ArrowRight':
+          addTextAtCaret('ArrowRight');
+          break;
+
+        case 'Delete':
           addTextAtCaret('Del');
           break;
+
         default:
           if (lang === 'en') {
             if (capsLock) {
@@ -193,12 +215,15 @@ const addKeysClickHandler = () => {
   });
 };
 
+
+// Change language EN/RU with pressing 'AltLeft' and 'ShiftLeft'
 function runOnKeys(func, ...codes) {
-  const pressed = new Set();
+  const pressed = new Set();s
 
   document.addEventListener('keydown', (event) => {
     document.getElementById('result').focus();
     pressed.add(event.code);
+    console.log(event.code)
     if (event.code === 'CapsLock') {
       upperLower();
     }
@@ -266,6 +291,8 @@ runOnKeys(
   'ShiftLeft',
 );
 
+
+// Save input text to localStorage
 result.value = localStorage.getItem('result');
 result.oninput = () => {
   localStorage.setItem('result', result.value);
@@ -273,6 +300,7 @@ result.oninput = () => {
 result.onchange = () => {
   localStorage.setItem('result', result.value);
 };
+
 
 window.onload = () => {
   // Render Keys

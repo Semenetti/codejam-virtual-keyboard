@@ -46,27 +46,20 @@ textarea:focus {
   border-radius: 8px;
   font-weight: bold;
 }
-
+#Tab,
+#Backspace,
 #CapsLock,
 #Enter,
 #Tab,
-#ShiftLeft,
 #ShiftRight {
   width: 100px;
 }
 
-#Backspace {
+#ShiftLeft {
   width: 150px;
 }
-
-#Tab {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 150px;
-}
-
 #Space {
-  width: 462px;
+  width: 408px;  
 }
 
 #result {
