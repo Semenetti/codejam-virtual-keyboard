@@ -218,7 +218,7 @@ const addKeysClickHandler = () => {
 
 // Change language EN/RU with pressing 'AltLeft' and 'ShiftLeft'
 function runOnKeys(func, ...codes) {
-  const pressed = new Set();s
+  const pressed = new Set();
 
   document.addEventListener('keydown', (event) => {
     document.getElementById('result').focus();

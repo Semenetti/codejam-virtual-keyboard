@@ -1,6 +1,9 @@
+html {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .wrapper {
-  margin: 0 auto;
-  max-width: 90vw;
+  margin: 0 auto;  
   margin-top: 10vh;
 }
 
@@ -89,7 +92,7 @@ textarea:focus {
   -ms-flex-item-align: center;
   align-self: center;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing: border-box;  
 }
 
 sup {
@@ -123,5 +126,8 @@ span {
 
 .keyup {
   background: linear-gradient(90deg, white 15%, darkgray 90%);
+}
+#helpNotes {    
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
