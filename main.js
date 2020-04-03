@@ -128,7 +128,7 @@ function addTextAtCaret(text) {
 const cancelCommandKeysDefaultActions = (e) => {
   switch (e.key) {
     case 'Tab':
-      e.preventDefault();     
+      e.preventDefault();
       addTextAtCaret('   ');
       break;
     case 'Alt':
@@ -223,7 +223,6 @@ function runOnKeys(func, ...codes) {
   document.addEventListener('keydown', (event) => {
     document.getElementById('result').focus();
     pressed.add(event.code);
-    console.log(event.code)
     if (event.code === 'CapsLock') {
       upperLower();
     }

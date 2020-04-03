@@ -170,7 +170,6 @@ const arrayWithKeys = [
       id: "Delete",
       innerHTML: "Del"
     }
-    
   ],
   [
     {
@@ -324,7 +323,7 @@ const arrayWithKeys = [
       valueRus: "",
       id: "ShiftRight",
       innerHTML: "Shift"
-    }    
+    }
   ],
   [
     {
@@ -350,7 +349,7 @@ const arrayWithKeys = [
       valueRus: "",
       id: "AltRight",
       innerHTML: "Alt"
-    },   
+    },
     {
       value: "",
       valueRus: "",
