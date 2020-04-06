@@ -3,7 +3,7 @@ const arrayWithKeys = [
     {
       value: "~",
       valueRus: "Ё",
-      id: "~",
+      id: "Backquote",
       innerHTML: "<span>~</span><sup>Ё</sup>"
     },
     {
@@ -69,13 +69,13 @@ const arrayWithKeys = [
     {
       value: "-",
       valueRus: "-",
-      id: "-",
+      id: "Minus",
       innerHTML: "-"
     },
     {
       value: "=",
       valueRus: "=",
-      id: "=",
+      id: "Equal",
       innerHTML: "="
     },
     {
@@ -235,13 +235,13 @@ const arrayWithKeys = [
     {
       value: ";",
       valueRus: "Ж",
-      id: ";",
+      id: "Semicolon",
       innerHTML: "<span>;</span><sup>Ж</sup>"
     },
     {
       value: "'",
       valueRus: "Э",
-      id: "'",
+      id: "Quote",
       innerHTML: "<span>'</span><sup>Э</sup>"
     },
     {

@@ -125,7 +125,7 @@ function addTextAtCaret(text) {
   textArea.focus();
 }
 
-const cancelCommandKeysDefaultActions = (e) => {
+const cancelCommandKeysDefaultActions = (e) => {  
   switch (e.key) {
     case 'Tab':
       e.preventDefault();
