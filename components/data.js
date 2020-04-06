@@ -155,13 +155,13 @@ const arrayWithKeys = [
     {
       value: "[",
       valueRus: "Х",
-      id: "[",
+      id: "BracketLeft",
       innerHTML: "<span>[</span><sup>Х</sup>"
     },
     {
       value: "]",
       valueRus: "Ъ",
-      id: "]",
+      id: "BracketRight",
       innerHTML: "<span>]</span><sup>Ъ</sup>"
     },
     {
